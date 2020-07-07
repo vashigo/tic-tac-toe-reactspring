@@ -4,6 +4,7 @@ const {
   CssBaseline,
   ThemeProvider,
   Typography,
+  TextField,
   Container,
   makeStyles,
   createMuiTheme,
@@ -84,8 +85,23 @@ class Game extends React.Component {
         }
       ],
       stepNumber: 0,
-      xIsNext: true
+      xIsNext: true,
+      idSala: "",
+      salaState: false
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleChangeState = this.handleChangeState.bind(this);
+  }
+  
+  handleChange(e) {
+        this.setState({ [e.target.name] : e.target.value });
+        console.log(e.target.value);
+  }
+  
+
+  handleChangeState(e) {
+    this.setState({ [e.target.name] : !this.state.salaState });
+        console.log(this.state.salaState);
   }
 
   handleClick(i) {
@@ -125,7 +141,9 @@ class Game extends React.Component {
         'Go to game start';
       return (
         <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          <Button variant="outlined" color="primary" onClick={() => this.jumpTo(move)}>
+                    {desc}
+          </Button>
         </li>
       );
     });
@@ -151,6 +169,42 @@ class Game extends React.Component {
               <ol>{moves}</ol>
             </div>
           </div>
+                  <div>
+                  <TextField
+                    variant="outlined"
+                    margin="auto"
+                    required
+                    id="idSala"
+                    label="Id sala"
+                    name="idSala"
+                    autoComplete="idSala"
+                    autoFocus
+                    value={this.state.idSala} 
+                    onChange={this.handleChange}
+                  />
+                  <div>
+                  <Button
+                    size="large"
+                    variant="contained"
+                    color="primary"
+                    name="salaState"
+                    value={this.state.salaState} 
+                    onClick={this.handleChangeState}
+                  >
+                    Crear
+                            </Button>
+                  <Button
+                    size="large"
+                    variant="contained"
+                    color="secondary"
+                    name="salaState"
+                    value={this.state.salaState} 
+                    onClick={this.handleChangeState}
+                  >
+                    Entrar
+                            </Button>
+                    </div>
+            </div>
         </Container>
     );
   }
