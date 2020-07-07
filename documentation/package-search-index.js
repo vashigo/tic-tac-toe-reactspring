@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"edu.escuelaing.arsw.tictactoeReact"},{"l":"edu.escuelaing.arsw.tictactoeReact.configuration"},{"l":"edu.escuelaing.arsw.tictactoeReact.endpoints"},{"l":"edu.escuelaing.arsw.tictactoeReact.model"},{"l":"edu.escuelaing.arsw.tictactoeReact.repository"}]

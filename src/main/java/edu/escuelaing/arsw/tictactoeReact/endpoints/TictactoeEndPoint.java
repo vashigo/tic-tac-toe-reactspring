@@ -15,11 +15,10 @@ import org.springframework.stereotype.Component;
  * @author Vashi
  */
 @Component
-@ServerEndpoint("/tictactoe")
+@ServerEndpoint(value = "/tictactoe")
 public class TictactoeEndPoint {
 
-    private static final Logger logger
-            = Logger.getLogger(TictactoeEndPoint.class.getName());
+    private static final Logger logger = Logger.getLogger("ETFEndpoint");
     
     static ConcurrentHashMap<String, Session[]> salas = new ConcurrentHashMap<String, Session[]>();
 
