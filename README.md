@@ -2,7 +2,7 @@
 
 # app desplegada en heroku
 
-sistema tablero interactivo de dibujo multiusuario 
+Juego De Tic Tac Toe interactivo
 
 * [Tic Tac Toe React y Spring](https://reac-tictactoe.herokuapp.com/)
 
