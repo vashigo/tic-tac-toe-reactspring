@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+.tablero-content
+{
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    border: 3px solid green;
+
+}
