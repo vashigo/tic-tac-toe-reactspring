@@ -7,7 +7,7 @@ FROM maven:3.5-jdk-8-alpine as builder
  COPY src ./src
 
 # Build a release artifact.
-RUN mvn clean install -DskipTests
+RUN mvn clean package -DskipTests
 
 # Use the Official OpenJDK image for a lean production stage of our multi-stage build.
 # https://hub.docker.com/_/openjdk
