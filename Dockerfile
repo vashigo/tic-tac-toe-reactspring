@@ -2,9 +2,9 @@
 FROM maven:3.5-jdk-8-alpine as builder
 
 # Copy local code to the container image.
-# WORKDIR /
-# COPY pom.xml .
-# COPY src ./src
+ WORKDIR /app
+ COPY pom.xml .
+ COPY src ./src
 
 # Build a release artifact.
 RUN mvn clean install -DskipTests
@@ -15,7 +15,7 @@ RUN mvn clean install -DskipTests
 FROM openjdk:8-jre-alpine
 
 # Copy the jar to the production image from the builder stage.
-COPY --from=builder target/intro-react-0.0.1-SNAPSHOT.jar intro-react.jar
+COPY --from=builder /app/target/intro-react-0.0.1-SNAPSHOT.jar /intro-react.jar
 
 # Run the web service on container startup.
-CMD ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "intro-react.jar"]
+CMD ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/intro-react.jar"]
