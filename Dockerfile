@@ -7,8 +7,8 @@ FROM maven:3.5-jdk-8-alpine as builder
 RUN mvn clean install -DskipTests
 FROM openjdk:8
 ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} intro-react.jar
-ENTRYPOINT ["java","-jar","/intro-react.jar"]
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
 
 # Use the official maven/Java 8 image to create a build artifact: https://hub.docker.com/_/maven
 #FROM maven:3.5-jdk-8-alpine as builder
