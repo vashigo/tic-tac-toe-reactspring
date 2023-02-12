@@ -1,4 +1,5 @@
 FROM maven:3.5-jdk-8-alpine as builder
+FROM openjdk:8-jre-alpine AS build
 
 RUN mkdir -p ./Dockerfile/app
 COPY pom.xml .
