@@ -1,22 +1,17 @@
-FROM openjdk:8-jre-alpine AS build
 FROM maven:3.5-jdk-8-alpine as builder
 
-RUN apk update && apk upgrade && apk add bash
-
 RUN mkdir -p ./Dockerfile/app
-WORKDIR ./Dockerfile/app
 COPY pom.xml .
 COPY src ./src
+WORKDIR ./Dockerfile/app
 
 RUN mvn clean package -DskipTests
 
 FROM openjdk:8-jre-alpine
 
-RUN apk update && apk upgrade && apk add bash
-
 EXPOSE 8080
 
-COPY --from=builder ./Dockerfile/app/target/intro-react-0.0.1-SNAPSHOT.jar /app.jar
+COPY --from=build ./Dockerfile/app/target/intro-react-0.0.1-SNAPSHOT.jar /app.jar
 
 ENV JAVA_OPTS=""
 CMD exec java $JAVA_OPTS -jar /app.jar
