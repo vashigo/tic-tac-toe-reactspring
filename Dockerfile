@@ -1,10 +1,10 @@
 FROM maven:3.5-jdk-8-alpine as builder
 FROM openjdk:8-jre-alpine AS build
 
-RUN mkdir -p ./Dockerfile/app
+RUN mkdir -p /Dockerfile/app
 COPY pom.xml .
 COPY src ./src
-WORKDIR ./Dockerfile/app
+WORKDIR /Dockerfile/app
 
 RUN mvn clean package -DskipTests
 
@@ -12,7 +12,7 @@ FROM openjdk:8-jre-alpine
 
 EXPOSE 8080
 
-COPY --from=build ./Dockerfile/app/target/intro-react-0.0.1-SNAPSHOT.jar /app.jar
+COPY --from=build /Dockerfile/app/target/intro-react-0.0.1-SNAPSHOT.jar /app.jar
 
 ENV JAVA_OPTS=""
 CMD exec java $JAVA_OPTS -jar /app.jar
